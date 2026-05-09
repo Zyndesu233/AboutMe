@@ -1,122 +1,97 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useEffect, useRef } from 'react'
+import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import ParticleCanvas from './components/ParticleCanvas'
+import Home from './pages/Home'
+import ITPage from './pages/ITPage'
+import DebatePage from './pages/DebatePage'
 
-function App() {
-  const [count, setCount] = useState(0)
+// ── Inner layout — uses useLocation safely inside <BrowserRouter> ─────────────
+
+function AppLayout() {
+  const location = useLocation()
+  const mainRef  = useRef<HTMLDivElement>(null)
+
+  // Page transition on route change
+  useEffect(() => {
+    const el = mainRef.current
+    if (!el) return
+
+    el.style.transition = 'none'
+    el.style.opacity    = '0'
+    el.style.transform  = 'translateY(16px)'
+
+    // Force reflow before re-enabling transition
+    void el.offsetHeight
+
+    el.style.transition = 'opacity 0.45s cubic-bezier(0.16,1,0.3,1), transform 0.45s cubic-bezier(0.16,1,0.3,1)'
+    el.style.opacity    = '1'
+    el.style.transform  = 'translateY(0)'
+  }, [location.pathname])
+
+  // Scroll to top on navigation
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [location.pathname])
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      {/* Fixed background layers */}
+      <ParticleCanvas />
+      <div className="noise-overlay" aria-hidden="true" />
+      <div className="scanline"     aria-hidden="true" />
 
-      <div className="ticks"></div>
+      {/* Navigation */}
+      <Navbar />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      {/* Animated page wrapper */}
+      <div ref={mainRef} style={{ opacity: 0 }}>
+        <Routes>
+          <Route path="/"       element={<Home />}       />
+          <Route path="/it"     element={<ITPage />}     />
+          <Route path="/debate" element={<DebatePage />} />
+          <Route path="*"       element={<NotFound />}   />
+        </Routes>
+      </div>
     </>
   )
 }
 
-export default App
+// ── Root — provides the Router context ────────────────────────────────────────
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppLayout />
+    </BrowserRouter>
+  )
+}
+
+// ── 404 ───────────────────────────────────────────────────────────────────────
+
+function NotFound() {
+  return (
+    <main className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center">
+      <p className="text-xs tracking-[0.4em] text-[#9b6dff] mb-4 uppercase">404</p>
+      <h1
+        className="font-black leading-none mb-6 text-white/10"
+        style={{ fontFamily: "'Cinzel', serif", fontSize: 'clamp(3rem,10vw,7rem)' }}
+      >
+        Lost
+      </h1>
+      <p className="text-white/40 text-sm mb-8 max-w-xs leading-relaxed">
+        This page doesn't exist. Head back and explore something that does.
+      </p>
+      <Link
+        to="/"
+        className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:scale-105"
+        style={{ background: 'linear-gradient(135deg, #9b6dff, #e879a0)', color: '#fff' }}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        Go Home
+      </Link>
+    </main>
+  )
+}
