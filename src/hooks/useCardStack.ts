@@ -38,6 +38,7 @@ export function useCardStack(count: number) {
 				gsap.to(
 					inner,
 					{
+						scale: 1-(count-i)*0.01,
 						transformOrigin: "top center",
 						ease: "none",
 						scrollTrigger: {

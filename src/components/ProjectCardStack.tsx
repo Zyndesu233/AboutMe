@@ -1,16 +1,18 @@
+import type { Dispatch, SetStateAction } from "react";
 import { useCardStack } from "../hooks/useCardStack";
 import type { CardData } from "../data/Projects";
-import PROJECTS from "../data/Projects";
 import ProjectCard from "./ProjectCard";
 
 
 const ProjectCardStack = ({
-	cards = PROJECTS,
-}: Partial<{cards: CardData[]}>) => {
+	cards,
+	paddingSetter
+}: {cards: CardData[], paddingSetter: Dispatch<SetStateAction<number>>}) => {
 	const { containerRef, CARD_HEIGHT, SCROLL_DISTANCE } = useCardStack(cards.length);
+	paddingSetter((CARD_HEIGHT+SCROLL_DISTANCE)*cards.length);
 
 	return (
-		<div className="py-[3rem]">
+		<div style={{paddingTop: "3rem"}}>
 			<div ref={containerRef} className="relative w-full">
 				{cards.map((card, i) => (
 					<div
