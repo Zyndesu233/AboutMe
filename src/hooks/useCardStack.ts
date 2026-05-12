@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -8,49 +9,55 @@ export const CARD_HEIGHT = 520;
 export const SCROLL_DISTANCE = 700;
 
 export function useCardStack(count: number) {
-  const containerRef = useRef<HTMLDivElement>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+	useGSAP(() => {
+		const container = containerRef.current;
+		if (!container) return;
 
-    const wrappers = Array.from(
-      container.querySelectorAll<HTMLElement>(".card-wrapper")
-    );
-    const inners = Array.from(
-      container.querySelectorAll<HTMLElement>(".card-inner")
-    );
+		const wrappers = Array.from(
+			container.querySelectorAll<HTMLElement>(".card-wrapper")
+		);
+		const inners = Array.from(
+			container.querySelectorAll<HTMLElement>(".card-inner")
+		);
 
-    const ctx = gsap.context(() => {
-      inners.forEach((inner, i) => {
-        const nextWrapper = wrappers[i + 1];
-        if (!nextWrapper) return; // last card never shrinks
+		// Create a sentinel element to act as the trigger for the last card
+		const sentinel = document.createElement("div");
+		sentinel.style.cssText = `
+    height: ${SCROLL_DISTANCE}px;
+    pointer-events: none;
+    aria-hidden: true;
+  `;
+		container.appendChild(sentinel);
 
-        const scaleEnd = 0.9 - i * 0.03;
-        // Shift card up so its top peeks above the next card
-        const yEnd = -(i + 1) * (CARD_HEIGHT * 0.06);
+		const ctx = gsap.context(() => {
+			inners.forEach((inner, i) => {
+				const trigger = wrappers[i + 1] ?? sentinel;
 
-        gsap.fromTo(
-          inner,
-          { scale: 1, y: 0 },
-          {
-            scale: scaleEnd,
-            y: yEnd,
-            transformOrigin: "top center",
-            ease: "none",
-            scrollTrigger: {
-              trigger: nextWrapper,
-              start: "top bottom",
-              end: "top top",
-              scrub: 0.6,
-            },
-          }
-        );
-      });
-    }, container);
+				gsap.fromTo(
+					inner,
+					{ y: 0 },
+					{
+						y: 0,
+						transformOrigin: "top center",
+						ease: "none",
+						scrollTrigger: {
+							trigger,
+							start: "top bottom",
+							end: "top top",
+							scrub: 0.6,
+						},
+					}
+				);
+			});
+		}, container);
 
-    return () => ctx.revert();
-  }, [count]);
+		return () => {
+			sentinel.remove();
+			ctx.revert();
+		};
+	}, [count]);
 
-  return { containerRef, CARD_HEIGHT, SCROLL_DISTANCE };
+	return { containerRef, CARD_HEIGHT, SCROLL_DISTANCE };
 }
