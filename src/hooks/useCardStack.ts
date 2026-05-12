@@ -35,11 +35,9 @@ export function useCardStack(count: number) {
 			inners.forEach((inner, i) => {
 				const trigger = wrappers[i + 1] ?? sentinel;
 
-				gsap.fromTo(
+				gsap.to(
 					inner,
-					{ y: 0 },
 					{
-						y: 0,
 						transformOrigin: "top center",
 						ease: "none",
 						scrollTrigger: {
