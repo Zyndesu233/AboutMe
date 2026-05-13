@@ -46,7 +46,7 @@ const ProjectCard = ({ card }: { card: CardData }) => {
 
 			{/* ── Right visual panel ──────────────────────────────────────────── */}
 			<div className="relative flex-1 overflow-hidden">
-                <img className="place-self-center h-[100%]" src={`./src/assets/projectImg/${card.projectName}.png`} alt="" />
+                <img className="place-self-center h-[100%]" src={card.img} alt="" />
 				<div
 					className="absolute inset-0 pointer-events-none"
 					style={{

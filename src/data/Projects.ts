@@ -1,3 +1,7 @@
+import TREE_SIMULATOR_IMG from "../imgs/projectImg/treeSimulator.png"
+import XXX_PAPER_IMG from "../imgs/projectImg/XXX Paper.png"
+import CULTURAL_DESSERT_IMG from "../imgs/projectImg/Cultural Dessert.png"
+
 export interface CardData {
 	id: number;
 	projectName: string;
@@ -6,6 +10,7 @@ export interface CardData {
 	description: string;
 	bgColor: string;
 	accentColor: string;
+	img: string;
 }
 
 const PROJECTS: CardData[] = [
@@ -17,6 +22,7 @@ const PROJECTS: CardData[] = [
 		description: "treeSimulator is a command line tool visualizing tree-like data structures. The data structures such as AVL trees and red black trees are implemented in C language. With REPL, users can see how the trees change after inserting or deleting nodes.",
 		bgColor: "#12122a",
 		accentColor: "#e2d8b5",
+		img: TREE_SIMULATOR_IMG,
 	},
 	{
 		id: 2,
@@ -26,6 +32,7 @@ const PROJECTS: CardData[] = [
 		description: "XXX Paper is a web-based AI essay marking agent. The prototype was constructed with Express.js library, EJS view engine, and MongoDB database. It is reconstructed in the Next.js framework now.",
 		bgColor: "#2E2C1A",
 		accentColor: "#4A4A52",
+		img: XXX_PAPER_IMG,
 	},
 	{
 		id: 3,
@@ -35,6 +42,7 @@ const PROJECTS: CardData[] = [
 		description: "Cultural Dessert is a single page application allowing user to search for cultural activities. I am responsible for front-end development using React framework with React Router and Typescript.",
 		bgColor: "#1b5e96",
 		accentColor: "#7ec8f5",
+		img: CULTURAL_DESSERT_IMG,
 	},
 ];
 
