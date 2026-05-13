@@ -4,7 +4,7 @@ export interface Sections {
 
 const SECTION_LIST:Sections[] = [
     {
-        name: "Work Experience",
+        name: "WorkExperience",
     },
     {
         name: "Projects",
