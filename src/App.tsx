@@ -5,16 +5,16 @@ import Awards from "./components/Awards";
 
 const App = () => {
 
-  return (
-    <div className="min-h-screen bg-white">
-      <main>
-        <Hero />
-        <WorkExperience />
-        <Projects />
-        <Awards />
-      </main>
-    </div>
-  );
+	return (
+		<div className="min-h-screen bg-white">
+			<main>
+				<Hero />
+				<WorkExperience />
+				<Projects />
+				<Awards />
+			</main>
+		</div>
+	);
 };
 
 export default App;

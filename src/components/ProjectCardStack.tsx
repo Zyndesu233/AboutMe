@@ -41,18 +41,22 @@ const ProjectCardStack = ({ cards }: { cards: CardData[] }) => {
 	}, []);
 
 	return (
-		<div ref={containerRef} className="w-full min-h-[100vh] flex flex-col place-items-center relative">
-			<div className="w-[clamp(85%, 4vw, 90%)] flex flex-col place-items-center">
-				{cards.map((card, i) => (
-					<div
-						key={i}
-						className="card-wrapper w-full mb-[75vh]"
-					>
-						<ProjectCard card={card} />
-					</div>
-				))}
+		<>
+			<div className="h-[10vh] w-full" />
+			<div ref={containerRef} className="w-full min-h-[100vh] flex flex-col place-items-center relative">
+				<div className="w-[clamp(85%, 4vw, 90%)] flex flex-col place-items-center">
+					{cards.map((card, i) => (
+						<div
+							key={i}
+							className="card-wrapper w-full mb-[75vh]"
+						>
+							<ProjectCard card={card} />
+						</div>
+					))}
+				</div>
 			</div>
-		</div>
+			<div className="h-[10vh] w-full" />
+		</>
 	);
 }
 

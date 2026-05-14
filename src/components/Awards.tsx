@@ -6,7 +6,7 @@ const Awards = () => {
 
   return (
     <section className="h-[100vh]">
-        <SectionTitle title="Award" subtitle="This is what I won" />
+        <SectionTitle title="Awards" subtitle="This is what I won" />
         <AwardVisual />
     </section>
   );
