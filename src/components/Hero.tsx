@@ -130,7 +130,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="absolute bottom-8 right-8 flex flex-col items-center gap-2 group"
             >
-                <span className="text-[0.8rem] tracking-[0.2em] uppercase text-neutral-400 group-hover:text-neutral-700 transition-colors duration-200">
+                <span className="text-[1.25rem] tracking-[0.2em] uppercase text-neutral-400 group-hover:text-neutral-700 transition-colors duration-200">
                     Github Profile
                 </span>
                 <div className="relative overflow-hidden rounded-full ring-1 ring-neutral-200 group-hover:ring-neutral-400 group-hover:shadow-lg group-hover:-translate-y-0.5 transition-all duration-300">

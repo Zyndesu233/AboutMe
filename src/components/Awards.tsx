@@ -5,7 +5,7 @@ const Awards = () => {
   
 
   return (
-    <section className="h-[100vh]">
+    <section id="Awards" className="h-[100vh]">
         <SectionTitle title="Awards" subtitle="This is what I won" />
         <AwardVisual />
     </section>

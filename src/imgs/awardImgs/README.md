@@ -1,2 +1,2 @@
 # projectImg Converntion
-- Aspect ratio: 3:2
+- Aspect ratio: 16:9

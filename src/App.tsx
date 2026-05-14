@@ -6,7 +6,7 @@ import Awards from "./components/Awards";
 const App = () => {
 
 	return (
-		<div className="min-h-screen bg-white">
+		<div className="min-h-screen bg-[#F4F4F4]">
 			<main>
 				<Hero />
 				<WorkExperience />

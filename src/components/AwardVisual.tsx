@@ -14,7 +14,7 @@ const AwardVisual = () => {
     const currentAward = AWARD_LIST[activeAward];
 
     return (
-        <div className="h-[70vh]">
+        <div className="h-[70vh] w-[95vw] place-self-center">
             {/* Tab bar */}
             <div className="max-w-4xl mx-auto mb-10 flex">
                 <div
@@ -31,7 +31,7 @@ const AwardVisual = () => {
                             key={item.shortName}
                             onClick={() => handleTabClick(index)}
                             className={[
-                                "relative z-10 px-5 py-2 rounded-none text-[2rem] font-semibold transition-colors duration-200 whitespace-nowrap",
+                                "relative z-10 px-5 py-2 rounded-xs border text-[2rem] font-semibold transition-colors duration-200 whitespace-nowrap",
                                 activeAward === index
                                     ? "text-white bg-[#3388bb]"
                                     : "text-black hover:text-[white] hover:bg-[#3388bb]",
