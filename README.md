@@ -7,6 +7,6 @@ The tech stack is listed as follows:
 - TailwindCSS: CSS framework
 - GSAP: Web animation framework
 
-The source code of built version can be viewed in [https://github.com/Zyndesu233/AboutMe/tree/gh-pages](gh-pages branch).
+The source code of built version can be viewed in [gh-pages](https://github.com/Zyndesu233/AboutMe/tree/gh-pages) branch.
 
-The design of the website is inspired from [ブシロードゲームズ](https://bang-dream-on.bushimo.jp/).
+The design of the website is inspired by [ブシロードゲームズ](https://bang-dream-on.bushimo.jp/).
