@@ -4,10 +4,10 @@ import SectionTitle from "./SectionTitle";
 
 const Projects = () => {
     return (
-        <div id="Projects">
+        <section id="Projects">
             <SectionTitle title="Projects" subtitle="This is my profolio" />
             <ProjectCardStack cards={PROJECTS} />
-        </div>
+        </section>
     )
 }
 

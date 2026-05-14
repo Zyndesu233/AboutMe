@@ -3,12 +3,10 @@ import type { CardData } from "../data/Projects";
 const ProjectCard = ({ card }: { card: CardData }) => {
 	return (
 		<div
-			className="card-inner relative w-9/10 place-self-center overflow-hidden rounded-[1rem] h-5/9"
+			className="card-inner relative w-9/10 place-self-center overflow-hidden rounded-[1rem] h-[85vh] flex"
 			style={{
-				padding: "2rem",
 				backgroundColor: card.bgColor,
 				boxShadow: "0 -8px 40px rgba(0,0,0,0.4)",
-				display: "flex",
 			}}
 		>
 			{/* ── Left info panel ─────────────────────────────────────────────── */}
