@@ -2,7 +2,7 @@ import SectionTitle from "./SectionTitle";
 
 const WorkExperience = () => {
     return (
-        <div id="WorkExperience" className="h-dvh">
+        <div id="Work%20Experience" className="h-dvh">
             <SectionTitle title="Work Experience" subtitle="This is my career" />
         </div>
     )

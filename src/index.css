@@ -2,16 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 @import "tailwindcss";
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 10px;
-  font-family: "Josefin_Sans", "Noto Sans JP", Arial, Helvetica, sans-serif;
+  font-family: "Josefin Sans", "Noto Sans JP", Arial, Helvetica, sans-serif;
 }
 
 body {

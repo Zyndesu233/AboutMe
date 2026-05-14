@@ -1,10 +1,10 @@
-export interface Sections {
+export interface Section {
     name: string
 };
 
-const SECTION_LIST:Sections[] = [
+const SECTION_LIST:Section[] = [
     {
-        name: "WorkExperience",
+        name: "Work Experience",
     },
     {
         name: "Projects",

@@ -5,9 +5,6 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const CARD_HEIGHT = 520;
-export const SCROLL_DISTANCE = 700;
-
 export function useCardStack(count: number) {
 	const containerRef = useRef<HTMLDivElement>(null);
 
@@ -15,48 +12,31 @@ export function useCardStack(count: number) {
 		const container = containerRef.current;
 		if (!container) return;
 
-		const wrappers = Array.from(
-			container.querySelectorAll<HTMLElement>(".card-wrapper")
-		);
 		const inners = Array.from(
 			container.querySelectorAll<HTMLElement>(".card-inner")
 		);
 
-		// Create a sentinel element to act as the trigger for the last card
-		const sentinel = document.createElement("div");
-		sentinel.style.cssText = `
-    height: ${SCROLL_DISTANCE}px;
-    pointer-events: none;
-    aria-hidden: true;
-  `;
-		container.appendChild(sentinel);
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: container,
+				start: "top top",
+				end: `+=${count*100}%`,
+				pin: true,
+				scrub: 0.6,
+			}
+		})
 
-		const ctx = gsap.context(() => {
-			inners.forEach((inner, i) => {
-				const trigger = wrappers[i + 1] ?? sentinel;
+		inners.forEach((inner, i) => {
+			tl.to(
+				inner,
+				{
+					scale: 1 - (count - i) * 0.01,
+					transformOrigin: "top center",
+					ease: "none",
+				}
+			);
+		});
+	}, []);
 
-				gsap.to(
-					inner,
-					{
-						scale: 1-(count-i)*0.01,
-						transformOrigin: "top center",
-						ease: "none",
-						scrollTrigger: {
-							trigger,
-							start: "top bottom",
-							end: "top top",
-							scrub: 0.6,
-						},
-					}
-				);
-			});
-		}, container);
-
-		return () => {
-			sentinel.remove();
-			ctx.revert();
-		};
-	}, [count]);
-
-	return { containerRef, CARD_HEIGHT, SCROLL_DISTANCE };
+	return { containerRef };
 }

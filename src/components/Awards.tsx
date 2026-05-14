@@ -1,11 +1,15 @@
 import SectionTitle from "./SectionTitle";
+import AwardVisual from "./AwardVisual";
 
 const Awards = () => {
-    return (
-        <div id="Awards" className="h-dvh">
-            <SectionTitle title="Awards" subtitle="This is what I won" />
-        </div>
-    )
-}
+  
+
+  return (
+    <section className="h-[100vh]">
+        <SectionTitle title="Award" subtitle="This is what I won" />
+        <AwardVisual />
+    </section>
+  );
+};
 
 export default Awards;

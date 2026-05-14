@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
-import SECTION_LIST from "../data/Sections";
+import SECTION_LIST from "../data/Section";
 import HERO_IMG from "../imgs/hero.png";
 import ICON from "../imgs/icon.png";
 import { useGSAP } from "@gsap/react";
@@ -14,65 +14,59 @@ const Hero = () => {
     const subtitleRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
-        const ctx = gsap.context(() => {
-            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-            // Diagonal slash enters first
-            tl.fromTo(
-                diagonalRef.current,
-                { scaleX: 0, transformOrigin: "left center" },
-                { scaleX: 1, duration: 0.8, ease: "power4.inOut" }
-            );
+        // Diagonal slash enters first
+        tl.fromTo(
+            diagonalRef.current,
+            { scaleX: 0, transformOrigin: "left center" },
+            { scaleX: 1, duration: 0.8, ease: "power4.inOut" }
+        );
 
-            // Hero image slides in from right with fade
-            tl.fromTo(
-                imgRef.current,
-                { x: 80, opacity: 0 },
-                { x: 0, opacity: 1, duration: 1.0, ease: "power3.out" },
-                "-=0.4"
-            );
+        // Hero image slides in from right with fade
+        tl.fromTo(
+            imgRef.current,
+            { x: 80, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.0, ease: "power3.out" },
+            "-=0.4"
+        );
 
-            // Name slides up
-            tl.fromTo(
-                nameRef.current,
-                { y: 60, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.9 },
-                "-=0.6"
-            );
+        // Name slides up
+        tl.fromTo(
+            nameRef.current,
+            { y: 60, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.9 },
+            "-=0.6"
+        );
 
-            // Surname with slight delay
-            tl.fromTo(
-                subtitleRef.current,
-                { y: 40, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8 },
-                "-=0.6"
-            );
+        // Surname with slight delay
+        tl.fromTo(
+            subtitleRef.current,
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8 },
+            "-=0.6"
+        );
 
-            // Nav items stagger in
-            tl.fromTo(
-                navRef.current?.querySelectorAll("li") ?? [],
-                { x: -30, opacity: 0 },
-                { x: 0, opacity: 1, duration: 0.5, stagger: 0.08 },
-                "-=0.5"
-            );
+        // Nav items stagger in
+        tl.fromTo(
+            navRef.current?.querySelectorAll("li") ?? [],
+            { x: -30, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.5, stagger: 0.08 },
+            "-=0.5"
+        );
 
-            // GitHub link fades in last
-            tl.fromTo(
-                githubRef.current,
-                { opacity: 0, y: 16 },
-                { opacity: 1, y: 0, duration: 0.6 },
-                "-=0.3"
-            );
-        });
+        // GitHub link fades in last
+        tl.fromTo(
+            githubRef.current,
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.6 },
+            "-=0.3"
+        );
 
-        return () => ctx.revert();
     }, []);
 
     return (
-        <div
-            className="relative h-dvh overflow-hidden bg-white"
-            style={{ fontFamily: "'Josefin Sans', sans-serif" }}
-        >
+        <div className="relative h-dvh overflow-hidden bg-white">
             {/* ── Diagonal accent line ────────────────────────── */}
             <svg
                 ref={diagonalRef}

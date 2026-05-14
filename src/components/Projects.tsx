@@ -1,13 +1,12 @@
-import type { Dispatch, SetStateAction } from "react";
 import ProjectCardStack from "./ProjectCardStack";
 import PROJECTS from "../data/Projects";
 import SectionTitle from "./SectionTitle";
 
-const Projects = ({paddingSetter}: {paddingSetter: Dispatch<SetStateAction<number>>}) => {
+const Projects = () => {
     return (
-        <div id="Projects" className="h-dvh">
+        <div id="Projects">
             <SectionTitle title="Projects" subtitle="This is my profolio" />
-            <ProjectCardStack cards={PROJECTS} paddingSetter={paddingSetter}  />
+            <ProjectCardStack cards={PROJECTS} />
         </div>
     )
 }
