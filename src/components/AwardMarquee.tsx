@@ -1,36 +1,62 @@
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react"
 
-const AwardMarquee = ({content, duration}: {content: string, duration: number}) => {
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    const textRef = useRef<HTMLDivElement | null>(null);
+const AwardMarquee = ({ content, duration }: {
+    content: string;
+    duration: number;
+}) => {
+    const rootRef = useRef<HTMLDivElement | null>(null);
+    const trackRef = useRef<HTMLDivElement | null>(null);
 
     useGSAP(() => {
-        const container = containerRef.current;
-        const text = textRef.current;
-        if(!container || !text) return;
+        const track = trackRef.current;
+        if (!track) return;
 
-        container.append(text.cloneNode(true));
-        const animations = [];
-        container.querySelectorAll(".award-marquee-text").forEach((text) => {
-            const animation = gsap.to(text, {
-                x: "-100%",
+        const tween = gsap.to(
+            track,
+            {
+                xPercent: -50,
+                duration,
+                ease: "none",
                 repeat: -1,
-                duration: duration,
-                ease: "linear"
-            });
-            animations.push(animation);
-        });
-    }, []);
-    
+                force3D: true,
+            }
+        );
+
+        return () => {
+            tween.kill();
+        };
+    }, { scope: rootRef });
+
+    const items = Array.from({ length: 6 }, (_, i) => (
+        <span
+            key={i}
+            className="flex-shrink-0 whitespace-nowrap text-[10rem] leading-none text-[#dddddd]"
+            aria-hidden={i !== 0}
+        >
+            #{content}
+        </span>
+    ));
+
     return (
-        <div ref={containerRef} className="h-[10rem] flex gap-[10rem] overflow-hidden absolute w-full bottom-0 z-1">
-            <div ref={textRef} className="award-marquee-text text-[10rem] text-[#dddddd]">
-                {`#${content}`}
+        <div
+            ref={rootRef}
+            className="absolute bottom-0 z-[1] w-full overflow-hidden"
+        >
+            <div
+                ref={trackRef}
+                className="flex w-max gap-40 will-change-transform"
+            >
+                <div className="flex gap-40">
+                    {items}
+                </div>
+                <div className="flex gap-40" aria-hidden="true">
+                    {items}
+                </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default AwardMarquee;
