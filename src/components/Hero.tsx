@@ -66,7 +66,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <div className="relative h-dvh overflow-hidden bg-white">
+        <section className="relative h-dvh overflow-hidden bg-white">
             {/* ── Diagonal accent line ────────────────────────── */}
             <svg
                 ref={diagonalRef}
@@ -141,7 +141,7 @@ const Hero = () => {
                     />
                 </div>
             </a>
-        </div>
+        </section>
     );
 };
 

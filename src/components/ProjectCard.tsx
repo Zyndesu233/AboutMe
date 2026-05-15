@@ -1,4 +1,4 @@
-import type { CardData } from "../data/Projects";
+import type { CardData } from "../data/Project";
 
 const ProjectCard = ({ card }: { card: CardData }) => {
 	return (

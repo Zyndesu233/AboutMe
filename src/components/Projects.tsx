@@ -1,11 +1,11 @@
 import ProjectCardStack from "./ProjectCardStack";
-import PROJECTS from "../data/Projects";
+import PROJECTS from "../data/Project";
 import SectionTitle from "./SectionTitle";
 
 const Projects = () => {
     return (
         <section id="Projects">
-            <SectionTitle title="Projects" subtitle="This is my portfolio" />
+            <SectionTitle title="Projects" subtitle="Portfolio Highlights" />
             <ProjectCardStack cards={PROJECTS} />
         </section>
     )

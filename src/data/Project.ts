@@ -1,6 +1,6 @@
-import TREE_SIMULATOR_IMG from "../imgs/projectImg/treeSimulator.png"
-import XXX_PAPER_IMG from "../imgs/projectImg/XXX Paper.png"
-import CULTURAL_DESSERT_IMG from "../imgs/projectImg/Cultural Dessert.png"
+import TREE_SIMULATOR_IMG from "../imgs/projectImgs/treeSimulator.png"
+import XXX_PAPER_IMG from "../imgs/projectImgs/XXX Paper.png"
+import CULTURAL_DESSERT_IMG from "../imgs/projectImgs/Cultural Dessert.png"
 
 export interface CardData {
 	id: number;

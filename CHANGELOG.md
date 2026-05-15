@@ -1,7 +1,9 @@
 # Changelog
+## v1.2.2
+- Added animation for _Awards_ Section
 
 ## v1.2.1
-- Added text marquee for _Awards_ Section
+- Added text marquee effect in background for _Awards_ Section
 
 ## v1.2.0
 - Added _Awards_ Section

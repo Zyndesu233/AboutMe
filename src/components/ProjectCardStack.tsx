@@ -1,4 +1,4 @@
-import type { CardData } from "../data/Projects";
+import type { CardData } from "../data/Project";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
