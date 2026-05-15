@@ -5,7 +5,7 @@ import SectionTitle from "./SectionTitle";
 const Projects = () => {
     return (
         <section id="Projects">
-            <SectionTitle title="Projects" subtitle="This is my profolio" />
+            <SectionTitle title="Projects" subtitle="This is my portfolio" />
             <ProjectCardStack cards={PROJECTS} />
         </section>
     )

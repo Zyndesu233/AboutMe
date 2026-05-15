@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import AWARD_LIST from "../data/Award";
 import AwardCurrent from "./AwardCurrent";
 
@@ -14,7 +13,7 @@ const AwardVisual = () => {
     const currentAward = AWARD_LIST[activeAward];
 
     return (
-        <div className="h-[70vh] w-[95vw] place-self-center">
+        <div className="h-[70vh] w-[95vw] place-self-center relative">
             {/* Tab bar */}
             <div className="max-w-4xl mx-auto mb-10 flex">
                 <div

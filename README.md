@@ -9,4 +9,4 @@ The tech stack is listed as follows:
 
 The source code of built version can be viewed in [gh-pages](https://github.com/Zyndesu233/AboutMe/tree/gh-pages) branch.
 
-The design of the website is inspired by [ブシロードゲームズ](https://bang-dream-on.bushimo.jp/).
+The design of the website is inspired by [BanG Dream! Our Notes](https://bang-dream-on.bushimo.jp/).
