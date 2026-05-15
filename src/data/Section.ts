@@ -11,6 +11,9 @@ const SECTION_LIST:Section[] = [
     },
     {
         name: "Awards",
+    },
+    {
+        name: "Other Experience"
     }
 ];
 

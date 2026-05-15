@@ -1,7 +1,9 @@
+import Awards from "./components/AwardsSection/Awards";
 import Hero from "./components/Hero";
-import Projects from "./components/Projects";
+import OtherExperience from "./components/OtherExprienceSection/OtherExperience";
+import Projects from "./components/ProjectsSection/Projects";
 import WorkExperience from "./components/WorkExperience";
-import Awards from "./components/Awards";
+
 
 const App = () => {
 
@@ -12,6 +14,7 @@ const App = () => {
 				<WorkExperience />
 				<Projects />
 				<Awards />
+				<OtherExperience />
 			</main>
 		</div>
 	);

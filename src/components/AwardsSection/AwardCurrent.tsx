@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import type { Award } from "../data/Award";
+import type { Award } from "../../data/Award";
 
 gsap.registerPlugin(useGSAP);
 

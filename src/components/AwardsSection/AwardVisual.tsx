@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AWARD_LIST from "../data/Award";
+import AWARD_LIST from "../../data/Award";
 import AwardCurrent from "./AwardCurrent";
 
 const AwardVisual = () => {
