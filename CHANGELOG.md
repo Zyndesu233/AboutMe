@@ -1,4 +1,7 @@
 # Changelog
+## v1.3.0
+- Added _Work Experiece_ Section
+
 ## v1.2.2
 - Added animation for _Awards_ Section
 

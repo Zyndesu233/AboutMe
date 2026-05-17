@@ -1,6 +1,6 @@
 import Awards from "./components/AwardsSection/Awards";
 import Hero from "./components/Hero";
-import OtherExperience from "./components/OtherExprienceSection/OtherExperience";
+import Others from "./components/OtherSection/Others";
 import Projects from "./components/ProjectsSection/Projects";
 import WorkExperience from "./components/WorkExperienceSection/WorkExperience";
 
@@ -14,7 +14,7 @@ const App = () => {
 				<WorkExperience />
 				<Projects />
 				<Awards />
-				<OtherExperience />
+				<Others />
 			</main>
 		</div>
 	);
