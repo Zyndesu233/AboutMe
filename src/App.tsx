@@ -2,7 +2,7 @@ import Awards from "./components/AwardsSection/Awards";
 import Hero from "./components/Hero";
 import OtherExperience from "./components/OtherExprienceSection/OtherExperience";
 import Projects from "./components/ProjectsSection/Projects";
-import WorkExperience from "./components/WorkExperience";
+import WorkExperience from "./components/WorkExperienceSection/WorkExperience";
 
 
 const App = () => {
