@@ -12,9 +12,9 @@ const SECTION_LIST:Section[] = [
     {
         name: "Awards",
     },
-    {
-        name: "Other Experience"
-    }
+    // {
+    //     name: "Other Experience"
+    // }
 ];
 
 export default SECTION_LIST;

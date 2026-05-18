@@ -1,4 +1,7 @@
 # Changelog
+## v1.3.1
+- Added animation for _Work Experiece_ Section
+
 ## v1.3.0
 - Added _Work Experiece_ Section
 

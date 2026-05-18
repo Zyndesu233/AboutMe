@@ -17,5 +17,10 @@ The source code of built version can be viewed in [gh-pages](https://github.com/
 - All images are stored under `src/imgs/` directory
 - In some subdirectory of `src/imgs/` contains a `README.md` listing image convension
 
+## Future Plans
+- [x] Add animation
+- [ ] Dark mode
+- [ ] Responsive design for mobile devices
+
 ## Reference
-The design of the website is inspired by [BanG Dream! Our Notes](https://bang-dream-on.bushimo.jp/).
+The layout design of this website is inspired by [BanG Dream! Our Notes](https://bang-dream-on.bushimo.jp/).
